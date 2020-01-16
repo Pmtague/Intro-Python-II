@@ -5,7 +5,7 @@ from player import Player
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+"North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -40,9 +40,11 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-
+player_name = input("Please enter your name: ")
 
 p1 = Player(player_name, room['outside'])
+
+print(p1.current_room)
 
 # Write a loop that:
 #
@@ -50,7 +52,20 @@ p1 = Player(player_name, room['outside'])
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 
-for attribute in p1:
+directions = ["n", "s", "e", "w"]
+
+while True:
+	cmd = input("~~> ").lower()
+
+	if cmd in directions:
+		p1.travel(cmd)
+
+	elif cmd == "q":
+		print("Goodbye!")
+		exit()
+	
+	else:
+		print("I did not recognize that command")
 
 
 # If the user enters a cardinal direction, attempt to move to the room there.
