@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -33,6 +34,18 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+# Declare items
+
+item = {
+	'candle': Item("candle", "This candle burns bright"),
+	'dagger': Item("dagger", "dagger: I will cut you"),
+	'tunic': Item("tunic", "The fanciest shirt this side of the foyer"),
+	'shoes': Item("shoes", "Shop no further, these kicks aim to please"),
+	'map': Item("map", "map: This useless piece of paper will get you nowhere, but it looks cool"),
+	'rock': Item("rock", "rock: All the comforts of cave-dwelling"),
+	'pants': Item("pants", "pants: Don't leave home without 'em"),
+}
 
 #
 # Main
