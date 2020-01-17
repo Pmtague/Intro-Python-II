@@ -47,6 +47,16 @@ item = {
 	'pants': Item("pants", "pants: Don't leave home without 'em"),
 }
 
+# Link items to rooms
+
+room['foyer'].items.append(item['candle'].name)
+room['foyer'].items.append(item['map'].name)
+room['overlook'].items.append(item['rock'].name)
+room['narrow'].items.append(item['dagger'].name)
+room['narrow'].items.append(item['tunic'].name)
+room['narrow'].items.append(item['shoes'].name)
+room['treasure'].items.append(item['pants'].name)
+
 #
 # Main
 #
@@ -55,9 +65,9 @@ item = {
 
 player_name = input("Please enter your name: ")
 
-p1 = Player(player_name, room['outside'])
+player = Player(player_name, room['outside'])
 
-print(p1.current_room)
+# print(player.current_room)
 
 # Write a loop that:
 #
@@ -66,12 +76,21 @@ print(p1.current_room)
 # * Waits for user input and decides what to do.
 
 directions = ["n", "s", "e", "w"]
+actions = ["take", "drop"]
+check_inventory = ["i", "inventory"]
 
 while True:
+	print(f"\n----------------\n\n{player.name} is currently in the {player.current_room.name}.\n{player.current_room.description}\n")
+
+	if len(player.current_room.items) > 0:
+		print(f"The following items are in the {player.current_room.name}:")
+		for item in player.current_room.items:
+			print(f"\t{item}")
+
 	cmd = input("~~> ").lower()
 
 	if cmd in directions:
-		p1.travel(cmd)
+		player.travel(cmd)
 
 	elif cmd == "q":
 		print("Goodbye!")
@@ -79,6 +98,10 @@ while True:
 	
 	else:
 		print("I did not recognize that command")
+	
+	if cmd in actions:
+		if cmd == "take":
+			
 
 
 # If the user enters a cardinal direction, attempt to move to the room there.

@@ -12,8 +12,8 @@ class Room:
 		self.w_to = None
 		self.items = []
 
-	def __str__(self):
-		return f"\n-----------------\n\n{self.name}\n\n{self.description}\n"
+	# def __str__(self):
+	# 	return f"\n-----------------\n\n{self.name}\n\n{self.description}\n"
 	
 	def get_room_in_direction(self, direction):
 		if direction == "n":
